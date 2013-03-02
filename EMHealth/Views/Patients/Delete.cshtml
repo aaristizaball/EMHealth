@@ -1,0 +1,43 @@
+﻿@model MvcEMasterTest.Models.Patient
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Patient</legend>
+
+    <div class="display-field">
+        Name:
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-field">
+        Gender:
+        @Html.DisplayFor(model => model.Gender)
+    </div>
+
+    <div class="display-field">
+        Birthdate:
+        @Html.DisplayFor(model => model.Birthdate)
+    </div>
+
+    <div class="display-field">
+        Notes:
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+
+    <div class="display-field">
+        Registration Date:
+        @Html.DisplayFor(model => model.RegistrationDate)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

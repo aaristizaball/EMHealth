@@ -1,0 +1,79 @@
+﻿@model MvcEMasterTest.Models.Exam
+@{
+    ViewBag.Title = "Create";
+}
+<h2>
+    Create</h2>
+@using (Html.BeginForm("Create", "Exams", FormMethod.Post,
+    new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Exam</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ID)
+            @Html.ValidationMessageFor(model => model.ID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PatientId, "Patient")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PatientId", String.Empty)
+            @Html.ValidationMessageFor(model => model.PatientId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IssueDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IssueDate)
+            @Html.ValidationMessageFor(model => model.IssueDate)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Doctor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Doctor)
+            @Html.ValidationMessageFor(model => model.Doctor)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Type)
+            @Html.ValidationMessageFor(model => model.Type)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Notes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Notes)
+            @Html.ValidationMessageFor(model => model.Notes)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Report)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Report)
+            @Html.ValidationMessageFor(model => model.Report)
+        </div>
+        <div class="editor-label">
+            Upload file:
+        </div>
+        <div class="editor-field">
+            <input type="file" id="FileUpload" name="FileUpload" />
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

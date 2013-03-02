@@ -1,0 +1,45 @@
+﻿@model MvcEMasterTest.Models.Exam
+@{
+    ViewBag.Title = "Details";
+}
+<h2>
+    Details</h2>
+<fieldset>
+    <legend>Exam</legend>
+    <div class="display-label">
+        ID:
+        @Html.DisplayFor(model => model.ID)
+    </div>
+    <div class="display-field">
+        Patient Name:
+        @Html.DisplayFor(model => model.Patient.Name)
+    </div>
+    <div class="display-field">
+        Issue Date:
+        @Html.DisplayFor(model => model.IssueDate)
+    </div>
+    <div class="display-field">
+         Doctor Name:
+        @Html.DisplayFor(model => model.Doctor)
+    </div>
+    <div class="display-field">
+        Type:
+        @Html.DisplayFor(model => model.Type)
+    </div>
+    <div class="display-field">
+        Notes:
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+    <div class="display-field">
+        Report:
+        @Html.DisplayFor(model => model.Report)
+    </div>
+    <div class="display-field">
+        File:
+        <a href="~/@Model.UrlUploadedFile"> View </a>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

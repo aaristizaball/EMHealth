@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MvcEMasterTest.Models.Exam>
+@{
+    ViewBag.Title = "Exams";
+}
+<h2>
+    @ViewBag.Title</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("Index", "Exams", FormMethod.Get))
+    {
+        <p class="filters">
+            Patient: @Html.DropDownList("patientsList", "All")<br />
+            Doctor: @Html.TextBox("filterByDoctor")<br />
+            Type: @Html.TextBox("filterByType")<br />
+            Notes: @Html.TextBox("filterByNotes")<br /> 
+            Report: @Html.TextBox("filterByReport")<br />
+            <input type="submit" value="Filter" />
+        </p>
+    }
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.ActionLink("ID", "Index", new { sortBy = "id" })
+        </th>
+        <th>
+            @Html.ActionLink("Patient", "Index", new { sortBy = "patient" })
+        </th>
+        <th>
+            @Html.ActionLink("IssueDate", "Index", new { sortBy = "issueDate" })
+        </th>
+        <th>
+            @Html.ActionLink("Doctor", "Index", new { sortBy = "doctor" })
+        </th>
+        <th>
+            @Html.ActionLink("Type", "Index", new { sortBy = "type" })
+        </th>
+        <th>
+            @Html.ActionLink("Notes", "Index", new { sortBy = "notes" })
+        </th>
+        <th>
+            @Html.ActionLink("Report", "Index", new { sortBy = "report" })
+        </th>
+        <th>
+            File
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Report)
+            </td>
+            <td>
+                <a href="~/@item.UrlUploadedFile">@item.UrlUploadedFile</a>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>

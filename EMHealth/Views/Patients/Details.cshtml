@@ -1,0 +1,40 @@
+﻿@model MvcEMasterTest.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Patient</legend>
+
+    <div class="display-field">
+        Name:
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-field">
+        Gender:
+        @Html.DisplayFor(model => model.Gender)
+    </div>
+
+    <div class="display-field">
+        Birthdate:
+        @Html.DisplayFor(model => model.Birthdate)
+    </div>
+
+    <div class="display-field">
+        Notes:
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+
+    <div class="display-field">
+        Registration Date:
+        @Html.DisplayFor(model => model.RegistrationDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MvcEMasterTest.Models.Patient>
+@{
+    ViewBag.Title = "Patients";
+}
+<h2>
+    @ViewBag.Title</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("Index", "Patients", FormMethod.Get))
+    {
+        <p class="filters">
+            Name: @Html.TextBox("filterByName")<br />
+            Genre: @Html.TextBox("filterByGender")<br />
+            Notes: @Html.TextBox("filterByNotes")<br />
+            <input type="submit" value="Filter" />
+           
+        </p>
+    }
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.ActionLink("Name", "Index", new { sortBy = "name" })
+        </th>
+        <th>
+            @Html.ActionLink("Gender", "Index", new { sortBy = "gender" })
+        </th>
+        <th>
+            @Html.ActionLink("BirthDate", "Index", new { sortBy = "birthDate" })
+        </th>
+        <th>
+             @Html.ActionLink("Notes", "Index", new { sortBy = "notes" })
+        </th>
+        <th>
+            @Html.ActionLink("Registration Date", "Index", new { sortBy = "registrationDate" })
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>
